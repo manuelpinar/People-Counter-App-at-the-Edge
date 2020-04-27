@@ -46,7 +46,7 @@ I ran the application in Udacity workspace following the instructions in readme.
 ```
 python main.py -i resources/Pedestrian_Detect_2_1_1.mp4 -m model/faster_rcnn_inception_v2_coco/frozen_inference_graph.xml -l /opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so -d CPU -pt 0.4 | ffmpeg -v warning -f rawvideo -pixel_format bgr24 -video_size 768x432 -framerate 24 -i - http://0.0.0.0:3004/fac.ffm
 ```
- Below is the application UI outlook during video processing:
+Screenshot of APP launched 
 
 ![screenshot-1](images/frame_1.jpg)
 
