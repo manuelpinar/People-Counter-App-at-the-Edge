@@ -27,9 +27,9 @@ Competive
 - Model 1: [SSD_inception_v2_coco]
   - I converted the model to an Intermediate Representation with the following arguments...
   
-´´´
+```
 python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model frozen_inference_graph.pb --tensorflow_object_detection_api_pipeline_config pipeline.config --reverse_input_channels --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json
-````
+```
   - The model was insufficient for the app because with this model I couldn't detect the people in the frame correctly
   - I tried to improve the model for the app changing the threshold but the result don't improve
   
@@ -39,9 +39,11 @@ python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model 
 
 ```
 python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model model/faster_rcnn_inception_v2_coco/frozen_inference_graph.pb --tensorflow_object_detection_api_pipeline_config pipeline.config --reverse_input_channels --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/faster_rcnn_support.json
+
+```
   - The model was good for the app, working better than the previous model
   - I tried to improve the model for the app by changing the threshold to 0.4, doing this the model works perfect
-´´´
+
 ## Assess Model Use Cases
 
 This types of application could be very useful actually, due to the restrictions of people movements (due to COVID-19) one of the potential uses could be control the acces at common zones in offices, bank offices, etc... 
