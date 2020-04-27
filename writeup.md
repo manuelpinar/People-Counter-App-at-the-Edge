@@ -20,7 +20,7 @@ python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model 
 ## Comparing Model Performance
 
 Comparing with the previous selection (SSD_inception_v2_coco), the first model does not works correctly and it was imposible count correctly the people in the frame.
-
+First I took the SSD-inception_v2_coco without convert and used  model optimizer of OpenVino Toolkit to convert at IR (.xml and .bin), I proved this model with test video but I didn't get good results. To solve this I tried with other not converted model (Faster-RCNN), with this model I obteined better result than SSD model I decided use this in the project.    
 
 ## Assess Model Use Cases
 
