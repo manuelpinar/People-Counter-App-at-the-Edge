@@ -36,7 +36,7 @@ Other is in retail, the control of the people and the time inside the shop could
 
  - Lighting - This model didn't affected by the lighting especially with the test video, so this video have a good light, we should take in account in other models and other video inputs the light will be important in order to obtain a good result.
 
-* Camera focal length/image size - these greatly influence image quality and therefore the ability of the model to detect what it was trained to detect. In those cases when low quality camera cannot be replaced, and the model performs poorly on its footage, knowledge transfer with additional training on images from this particular camera should be considered.
+* Camera focal length/image size - we used an video size of 768x462 and framerate of 24, enough to obtain a correct result with the model selected. 
 
 
 ## Application Run
