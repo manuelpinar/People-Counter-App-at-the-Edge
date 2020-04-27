@@ -20,7 +20,26 @@ python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model 
 ## Comparing Model Performance
 
 Comparing with the previous selection (SSD_inception_v2_coco), the first model does not works correctly and it was imposible count correctly the people in the frame.
-First I took the SSD-inception_v2_coco without convert and used  model optimizer of OpenVino Toolkit to convert at IR (.xml and .bin), I proved this model with test video but I didn't get good results. To solve this I tried with other not converted model (Faster-RCNN), with this model I obteined better result than SSD model I decided use this in the project.    
+First I took the SSD-inception_v2_coco without convert and used  model optimizer of OpenVino Toolkit to convert at IR (.xml and .bin), I proved this model with test video but I didn't get good results. To solve this I tried with other not converted model (Faster-RCNN), with this model I obteined better result than SSD model I decided use this in the project.  
+
+Competive
+
+- Model 1: [SSD_inception_v2_coco]
+  - I converted the model to an Intermediate Representation with the following arguments...
+´´´
+python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model frozen_inference_graph.pb --tensorflow_object_detection_api_pipeline_config pipeline.config --reverse_input_channels --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json
+````
+  - The model was insufficient for the app because with this model I couldn't detect the people in the frame correctly
+  - I tried to improve the model for the app changing the threshold but the result don't improve
+  
+- Model 2: [faster_rcnn_inception_v2_coco]
+
+  - I converted the model to an Intermediate Representation with the following arguments...
+  ```
+python /opt/intel/openvino/deployment_tools/model_optimizer/mo.py --input_model model/faster_rcnn_inception_v2_coco/frozen_inference_graph.pb --tensorflow_object_detection_api_pipeline_config pipeline.config --reverse_input_channels --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/faster_rcnn_support.json
+```
+  - The model was good for the app, working better than the previous model
+  - I tried to improve the model for the app by changing the threshold to 0.4, doing this the model works perfect
 
 ## Assess Model Use Cases
 
