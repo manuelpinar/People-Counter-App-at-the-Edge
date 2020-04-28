@@ -40,7 +40,7 @@ class Network:
         self.exec_network = None
         self.infer_request = None
 
-    def load_model(self, model, CPU_EXTENSION, CPU_DEVICE, console_output= False):
+    def load_model(self, model, CPU_EXTENSION, DEVICE, console_output= False):
         ### TODO: Load the model ###
         model_xml = model
         model_bin = os.path.splitext(model_xml)[0] + ".bin"
@@ -49,9 +49,9 @@ class Network:
         self.network = IENetwork(model=model_xml, weights=model_bin)
         ### TODO: Check for supported layers ###
         if not all_layers_supported(self.plugin, self.network, console_output=console_output):
-            self.plugin.add_extension(CPU_EXTENSION, CPU_DEVICE)
+            self.plugin.add_extension(CPU_EXTENSION, DEVICE)
             
-        self.exec_network = self.plugin.load_network(self.network, CPU_DEVICE)
+        self.exec_network = self.plugin.load_network(self.network, DEVICE)
         # Get the input layer
         self.input_blob = next(iter(self.network.inputs))
         self.output_blob = next(iter(self.network.outputs))
