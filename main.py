@@ -90,11 +90,11 @@ def infer_on_stream(args, client):
     prob_threshold = args.prob_threshold
     model = args.model
     
-    CPU_DEVICE = args.device
+    DEVICE = args.device
     CPU_EXTENSION = args.cpu_extension
     
     ### TODO: Load the model through `infer_network` ###
-    infer_network.load_model(model, CPU_EXTENSION, CPU_DEVICE)
+    infer_network.load_model(model, CPU_EXTENSION, DEVICE)
     network_shape = infer_network.get_input_shape()
 
     ### TODO: Handle the input stream ###
